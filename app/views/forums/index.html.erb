@@ -1,3 +1,11 @@
+<div align="right" style="margin:2em">
+<%  if logged_in?%>
+<%= link_to "logout", session_path, :method=>"delete" %>
+<%else%>
+<%=  link_to "login", session_path, :method=>"post"%>
+<%end%>
+</div>
+
 <h1>Listing forums</h1>
 
 <table>
