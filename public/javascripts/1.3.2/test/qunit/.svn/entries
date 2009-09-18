@@ -1,0 +1,54 @@
+8
+
+dir
+6582
+http://jqueryjs.googlecode.com/svn/trunk/qunit
+http://jqueryjs.googlecode.com/svn
+
+
+
+2009-09-15T22:10:50.986041Z
+6579
+jeresig
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c715fcbe-d12f-0410-84c4-316a508785bb
+
+testsuite.css
+file
+
+
+
+
+2009-09-18T09:26:57.000000Z
+4c2dd4faf4c3b65a1e4eb330281458ad
+2009-09-15T15:52:40.460875Z
+6565
+joern.zaefferer
+has-props
+
+testrunner.js
+file
+
+
+
+
+2009-09-18T09:26:57.000000Z
+819a93b88468b7f2706655bdea13568d
+2009-09-15T22:10:50.986041Z
+6579
+jeresig
+has-props
+
