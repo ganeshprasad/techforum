@@ -14,8 +14,10 @@ ActionController::Routing::Routes.draw do |map|
                                               :action => 'reset_password'   
 
   map.resource :session
-
-  map.resources :forums, :has_many => :topics
+ #map.resources :forums, :has_many => :topics
+  map.resources :forums do |forum|
+    forum.resources :topics
+  end
   map.resources :topics, :has_many => :replies
   map.resources :replies
   map.root :controller => 'forums', :action => 'index'
