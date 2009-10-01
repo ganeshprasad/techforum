@@ -5,7 +5,7 @@
 <%=  link_to "login", session_path, :method=>"post"%>
 <%end%>
 </div>
-
+<div id='main-div'>
 <h1>Listing forums</h1>
 
 <table>
@@ -16,15 +16,14 @@
 
 <% @forums.each do |forum| %>
   <tr>
-    <td><%=link_to forum.name, forum_topics_path(forum) %></td>
+    <td><%=link_to_remote forum.name, :update => 'main-div', :url => forum_topics_path(forum), :method => 'GET'%></td>
     <td><%=h forum.description %></td>
-    <td><%= link_to 'Show', forum %></td>
-    <td><%= link_to 'Edit', edit_forum_path(forum) %></td>
-    <td><%= link_to 'Destroy', forum, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to_remote 'Show', :url =>forum %></td>
+    <td><%= link_to 'Edit', :url => edit_forum_path(forum) %></td>
+    <td><%= link_to 'Destroy', :url =>forum, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
-
 <%= link_to 'New forum', new_forum_path %>

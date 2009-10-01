@@ -4,7 +4,7 @@ class ForumsController < ApplicationController
   # GET /forums.xml
   def index
     @forums = Forum.all
-
+#logger.info(self.current_user.remember_token_expires_at.inspect)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @forums }

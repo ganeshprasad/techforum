@@ -1,22 +1,17 @@
 <h1>Listing topics</h1>
 
 <table>
-  <tr>
-    <th>Forum</th>
-    <th>User</th>
-    <th>Subject</th>
-    <th>Body</th>
+  <tr>    
+    <th>Topics</th>
   </tr>
 
 <% @topics.each do |topic| %>
-  <tr>
-    <td><%=h topic.forum %></td>
-    <td><%=h topic.user %></td>
-    <td><%=h topic.subject %></td>
-    <td><%=h topic.body %></td>
-    <td><%= link_to 'Show', topic %></td>
-    <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
+  <tr>   
+    <td><%=link_to_remote topic.subject,:url => topic_url(topic), :update => { :success => "cart", :failure => "error"}%></td>
+    <%#*<td><%=h topic.body %></td>%>
+    <%#*<td><%= link_to 'Show', topic %></td>%>
+    <%#*<td><%= link_to 'Edit', edit_topic_path(topic) %></td>%>
+    <%#*<td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>%>
   </tr>
 <% end %>
 </table>
@@ -24,3 +19,4 @@
 <br />
 
 <%= link_to 'New topic', new_topic_path %>
+

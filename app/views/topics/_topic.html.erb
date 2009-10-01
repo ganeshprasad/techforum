@@ -1,5 +1,5 @@
-<% form_for([@forum, @topic]) do |f| %>
-  <p>
+<% remote_form_for([@forum, @topic]) do |f| %>
+<p>
     <b>Subject</b><br />
     <%= f.text_field :subject %>
   </p>

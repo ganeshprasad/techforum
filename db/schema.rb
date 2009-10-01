@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090917045404) do
+ActiveRecord::Schema.define(:version => 20090923052134) do
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20090917045404) do
     t.string   "state",                                   :default => "passive"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "online_at"
   end
 
 end

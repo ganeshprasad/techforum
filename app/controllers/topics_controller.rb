@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_filter :load_forum
+  before_filter :load_forum, :except => 'new'
   
   def load_forum
     @forum = Forum.find(params[:forum_id])
@@ -7,12 +7,16 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
+    logger.info(@forum.inspect)
+    
     @topics = @forum.topics
+    logger.info(@topics.inspect)
+render :template => 'topics/index.html.erb'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @topics }
-    end
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @topics }
+#    end
   end
 
   # GET /topics/1
@@ -29,6 +33,7 @@ class TopicsController < ApplicationController
   # GET /topics/new
   # GET /topics/new.xml
   def new
+    @forum = Forum.find(:first) if @forum.nil?
     @topic = @forum.topics.build
 
     respond_to do |format|

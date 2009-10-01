@@ -4,6 +4,14 @@ module ApplicationHelper
     session[:user_id]
   end
   
+  def session_time_left current_user
+    time_left = time_ago_in_words(current_user.online_at + 5.minutes)
+    logger.info(time_left.inspect)
+    logger.info(time_left.class)
+    return "Your session expires in: '#{time_left}'"   # if time_left < "1 minute"
+    return "You have been logged out, Please login again."
+  end 
+  
   def current_controller
     request.path_parameters['controller']
   end  

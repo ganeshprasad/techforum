@@ -98,7 +98,7 @@ h3 {
 }
 
 .tabs li a:hover, .tabs li a:active {
-  background: #333;
+  background: 	#15317E;
 }
 
 .tabs li.current_tab a:link, .tabs li.current_tab a:visited, .tabs li.current_tab a:hover, .tabs li.current_tab a:active {

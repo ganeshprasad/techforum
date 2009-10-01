@@ -120,6 +120,23 @@ class User < ActiveRecord::Base
   def recently_activated?
     @recent_active
   end
+  
+  def self.users_online
+    User.find(:all, :conditions => ["online_at > ?", Time.now.utc-5.minutes])
+  end
+  
+  def is_online?
+    return true if online_at > Time.now.utc-5.minutes unless online_at.nil?
+  end
+  
+  def session_time_left 
+    logger.info("hello".inspect)
+   # logger.info(self.online_at.inspect) 
+time_left = (Time.now - self.online_at).minutes
+logger.info(time_left.inspect)
+return time_left if time_left > 5.minutes
+    return "You are logged out"
+  end
   protected
   def make_password_reset_code
     self.password_reset_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
@@ -149,4 +166,5 @@ class User < ActiveRecord::Base
     self.activated_at = Time.now.utc
     self.deleted_at = self.activation_code = nil
   end
+  
 end

@@ -1,66 +1,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
-
-    <head>
-      <title><%= @page_title || 'Welcome to Tech Forum' %></title>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <%= stylesheet_link_tag 'style' %>
-      <%= stylesheet_link_tag 'application' %>
-
-      <%= javascript_include_tag :defaults %>
-    </head>
-
-      <body>
-
-    <!-- ##### Header ##### -->    
-     <div id="header">
-      <div class="superHeader">
-         <% if user_logged_in? %>
-              <span>You are logged in as: </span>
-         <%= current_user.login %>
-         <% else %>
-         <span>Welcome Guest</span>
-         <% end %>
-       </div>
-       
-          <div class="midHeader">
-            <h1 class="headerTitle" lang="la">Welcome to Tech Forum</h1>
-          </div>
-
-       <%#*<div class="subHeader">%>
-      <%#*<span class="doNotDisplay">Navigation:</span>%>
-      <%# if user_logged_in? %> 
-         <%#= link_to 'Logout', logout_url  %> 
-      <%# else %>
-       <%#= link_to "Signup", signup_url  %>
-       <%#*| <%= link_to 'Login', login_url  %>%>
-       <%# end %> 
-      <%#*| <%= link_to 'Contact Us', 'contact'  %>%>
-       <%#*</div>%>
-     
-        </div>
-
-        <!-- ##### Main Copy ##### -->
-        <div class="wrapper">
-          <%= render 'shared/tabs' %>
-        <div class="content">
-<%= render :partial => 'shared/nav'  %>
-<div id="main-copy">
-         <% flash.each do |key,value| %>
-         <div id="flash" class="flash_<%= key %>" >
-          <span class="message"><%= value %></span>
-         </div>
-         <% end -%>
-
-         <%= yield :layout %>
-         <%= render :partial => 'shared/bottomnav' %>
-        </div>
-</div>
-</div>
-        
-
-      </body>
-    </html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
   
+  <head>
+    <title><%= @page_title || 'Welcome to Tech Forum' %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <%= stylesheet_link_tag 'style' %>
+    <%= stylesheet_link_tag 'application' %>
+    
+    <%= javascript_include_tag :defaults %>
+  </head>
+  
+  <body>
+    
+    <!-- ##### Header ##### -->    
+    <div id="header">
+      <div class="superHeader">
+        <% if user_logged_in? %>
+          <span>You are logged in as: </span>
+          <%= current_user.login %>
+        <% else %>
+          <span>Welcome Guest</span>
+        <% end %>
+      </div>
+      
+      <div class="midHeader">
+        <h3 class="headerTitle" lang="la">Welcome to Tech Forum</h3>
+      </div>   
+           
+    </div>
+    
+    <!-- ##### Main Copy ##### -->
+    <div class="wrapper">
+      <%= render 'shared/tabs' %>
+      <div class="content">
+        <%= render :partial => 'shared/nav'  %>
+        <div id="main-copy">
+          <% flash.each do |key,value| %>
+            <div id="flash" class="flash_<%= key %>" >
+              <span class="message"><%= value %></span>
+            </div>
+          <% end -%>
+          
+          <%= yield :layout %>
+                   
+        </div>
+        <%= render :partial => 'shared/bottomnav' %>
+        <%= render :partial => 'shared/stats' %>
+      </div>
+    </div>
+    <div id="time_div">
+      I don't have the time, but
+      <%= link_to_remote( "click here",
+                         :update => "time_div",
+                         :url =>{ :action => :say_when }) %>
+      and I will look it up.
+    </div>
+ 
+    
+  </body>
+</html>
+
