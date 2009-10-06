@@ -16,14 +16,14 @@
 
 <% @forums.each do |forum| %>
   <tr>
-    <td><%=link_to_remote forum.name, :update => 'main-div', :url => forum_topics_path(forum), :method => 'GET'%></td>
+    <td><%=link_to_remote forum.name, :update => 'main-copy', :url => forum_topics_path(forum), :method => 'GET'%></td>
     <td><%=h forum.description %></td>
     <td><%= link_to_remote 'Show', :url =>forum %></td>
-    <td><%= link_to 'Edit', :url => edit_forum_path(forum) %></td>
-    <td><%= link_to 'Destroy', :url =>forum, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to_remote 'Edit', :url => edit_forum_path(forum) %></td>
+    <td><%= link_to_remote 'Destroy', :update => 'main-copy', :url =>forum_path(forum), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 </div>
 <br />
-<%= link_to 'New forum', new_forum_path %>
+<%= link_to_remote 'New forum', :update => 'main-copy', :url => new_forum_path, :method => 'get' %>

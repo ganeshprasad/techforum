@@ -1,5 +1,4 @@
 <h1>Listing topics</h1>
-
 <table>
   <tr>    
     <th>Topics</th>
@@ -18,5 +17,5 @@
 
 <br />
 
-<%= link_to 'New topic', new_topic_path %>
+<%= link_to_remote 'New topic', :update => 'main-copy', :url => new_forum_topic_path, :method => 'get' %>
 

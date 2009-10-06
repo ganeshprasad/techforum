@@ -33,7 +33,7 @@ render :template => 'topics/index.html.erb'
   # GET /topics/new
   # GET /topics/new.xml
   def new
-    @forum = Forum.find(:first) if @forum.nil?
+    @forum = Forum.find(params[:forum_id]) if @forum.nil?
     @topic = @forum.topics.build
 
     respond_to do |format|
