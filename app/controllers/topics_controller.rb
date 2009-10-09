@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
     
     @topics = @forum.topics
     logger.info(@topics.inspect)
-render :template => 'topics/index.html.erb'
+render :template => 'topics/index.html.erb', :layout => false
 
 #    respond_to do |format|
 #      format.html # index.html.erb
@@ -25,7 +25,7 @@ render :template => 'topics/index.html.erb'
     @topic = @forum.topics.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render :template => 'topics/show.html.erb', :layout => false}# show.html.erb
       format.xml  { render :xml => @topic }
     end
   end
@@ -37,7 +37,7 @@ render :template => 'topics/index.html.erb'
     @topic = @forum.topics.build
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html {render :template => 'topics/new.html.erb', :layout => false} # new.html.erb
       format.xml  { render :xml => @topic }
     end
   end
@@ -55,7 +55,7 @@ render :template => 'topics/index.html.erb'
     respond_to do |format|
       if @topic.save
         flash[:notice] = 'Topic was successfully created.'
-        format.html { redirect_to(@forum) }
+        format.html { redirect_to(forum_topics_url(@forum)) }
         format.xml  { render :xml => @topic, :status => :created, :location => @topic }
       else
         format.html { render :action => "new" }

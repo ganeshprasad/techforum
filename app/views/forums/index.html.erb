@@ -1,26 +1,26 @@
-<div align="right" style="margin:2em">
-<%  if logged_in?%>
-<%= link_to "logout", session_path, :method=>"delete" %>
-<%else%>
-<%=  link_to "login", session_path, :method=>"post"%>
-<%end%>
-</div>
+<%#*<div align="right" style="margin:2em">%>
+<%#  if logged_in?%>
+<%#= link_to "logout", session_path, :method=>"delete" %>
+<%#else%>
+<%#=  link_to "login", session_path, :method=>"post"%>
+<%#end%>
+<%#*</div>%>
 <div id='main-div'>
 <h1>Listing forums</h1>
 
-<table>
+
   <tr>
     <th>Name</th>
     <th>Description</th>
   </tr>
-
+<table>
 <% @forums.each do |forum| %>
   <tr>
-    <td><%=link_to_remote forum.name, :update => 'main-copy', :url => forum_topics_path(forum), :method => 'GET'%></td>
+    <td><%=link_to_remote forum.name, :update => 'main-div', :url => forum_topics_path(forum), :method => 'GET'%></td>
     <td><%=h forum.description %></td>
     <td><%= link_to_remote 'Show', :url =>forum %></td>
     <td><%= link_to_remote 'Edit', :url => edit_forum_path(forum) %></td>
-    <td><%= link_to_remote 'Destroy', :update => 'main-copy', :url =>forum_path(forum), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to_remote 'Destroy', :update => 'main-div', :url =>forum_path(forum), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -75,11 +75,14 @@ h3 {
 }
 
 .tabs { 
-  position: relative;
-  margin: -24px 0 0 13px;
-  width: 710px;
-  font: 1em Verdana, Helvetica, Arial, Sans-Serif;
-  padding: 5px 15px 6px 12px;
+  border-collapse: collapse;
+                     padding: 0 0 0 1em;
+                     white-space: nowrap;
+                     list-style: none;
+                     margin: 5px;
+                     height: auto;
+                     line-height: normal;
+                     border-bottom: 1px solid #bbb; 
 }
   
 .tabs li {
@@ -88,8 +91,14 @@ h3 {
 }
   
 .tabs li a {
-  font-size: 10px;
-  padding: 6px 12px;
+  background-color: #ddd;
+                          border-color: #bbb;
+                          border-width: 1px;
+                          border-style: solid solid none solid;
+                          height: auto;
+                          margin-right: 0.5em;
+                          padding: 0 1em;
+                          text-decoration: none; 
 }
 
 .tabs li a:link, .tabs li a:visited {
@@ -98,13 +107,15 @@ h3 {
 }
 
 .tabs li a:hover, .tabs li a:active {
-  background: 	#15317E;
+    background-color: #fff;
+                                     border: 1px solid #bbb;
+                                     border-bottom: #fff 1px solid;
 }
 
 .tabs li.current_tab a:link, .tabs li.current_tab a:visited, .tabs li.current_tab a:hover, .tabs li.current_tab a:active {
-  background: #fff;
-  color: #333 !important;
-  text-decoration: none;
+  background-color: #eee;
+                                     border-color: #ccc;
+                                     border-bottom-color: #eee; 
 }
 
 .nav {

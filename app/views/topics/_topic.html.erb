@@ -1,4 +1,4 @@
-<% remote_form_for([@forum, @topic]) do |f| %>
+<% remote_form_for([@forum, @topic], :update => 'main-copy') do |f| %>
 <p>
     <b>Subject</b><br />
     <%= f.text_field :subject %>

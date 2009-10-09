@@ -1,21 +1,14 @@
 <h1>Listing topics</h1>
 <table>
-  <tr>    
-    <th>Topics</th>
-  </tr>
-
+ 
 <% @topics.each do |topic| %>
   <tr>   
-    <td><%=link_to_remote topic.subject,:url => topic_url(topic), :update => { :success => "cart", :failure => "error"}%></td>
-    <%#*<td><%=h topic.body %></td>%>
-    <%#*<td><%= link_to 'Show', topic %></td>%>
-    <%#*<td><%= link_to 'Edit', edit_topic_path(topic) %></td>%>
-    <%#*<td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>%>
+    <%=link_to_remote topic.subject,:update => 'main-div', :url => forum_topic_path(topic.forum_id, topic), :method => 'GET'%>  
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to_remote 'New topic', :update => 'main-copy', :url => new_forum_topic_path, :method => 'get' %>
+<%= link_to_remote 'New topic', :update => 'main-div', :url => new_forum_topic_path, :method => 'get' %>
 

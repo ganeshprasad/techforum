@@ -1,18 +1,16 @@
-<p>
-  <b>Forum:</b>
-  <%=h @forum.name %>
-</p>
-
-<p>
-  <b>Subject:</b>
-  <%=h @topic.subject %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%=h @topic.body %>
-</p>
-
-
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', forum_path(@forum) %>
+<table>
+  <tr><b>Forum:</b><%=h @forum.name %></tr>
+  <tr><b>Subject:</b><%=h @topic.subject%></tr>
+  <tr><b>Body:</b><%=h @topic.body%></tr>
+  <tr><b>Listing replies</b></tr> 
+<% @topic.replies.each do |reply| %>
+  <tr>  
+    <td><%=h reply.body %></td>
+    <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div id='reply-topic'>
+</div>
+<%= link_to_remote 'Reply the topic', :update => 'reply-topic', :url => new_topic_reply_path(@topic), :method => 'GET'%>
+<%= link_to_remote 'Back to topics', :update => 'main-copy', :url => forum_topics_path(@forum), :method => 'GET' %>

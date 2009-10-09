@@ -32,7 +32,7 @@ class RepliesController < ApplicationController
     @reply = @topic.replies.build
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html {render :template => 'replies/new.html.erb', :layout => false} # new.html.erb
       format.xml  { render :xml => @reply }
     end
   end
